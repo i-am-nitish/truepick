@@ -1,0 +1,62 @@
+.pricing-page { background: var(--color-gray-100); }
+
+.pricing-hero {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+.pricing-title { font-size: 2rem; margin: 0; }
+
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+.tier-card {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--color-gray-200);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.tier-card.featured {
+  border-color: var(--color-teal);
+  background: #f0faf8;
+}
+
+.tier-header { text-align: center; }
+.tier-name { font-size: 1.25rem; margin: 0 0 var(--spacing-xs); }
+.tier-sub { color: var(--color-gray-500); font-size: 0.875rem; margin: 0 0 var(--spacing-md); }
+.tier-price { font-size: 3rem; font-weight: 800; color: var(--color-gray-900); }
+
+.tier-divider { border: none; border-top: 1px solid var(--color-gray-200); }
+
+/* Bullet points matching the design */
+.tier-features {
+  list-style: disc;
+  padding-left: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+.tier-features li { font-size: 0.9rem; }
+
+.btn-select {
+  width: 100%;
+  padding: var(--spacing-md);
+  background: var(--color-teal);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: auto;
+}
+.btn-select:hover { background: var(--color-teal-dark); }

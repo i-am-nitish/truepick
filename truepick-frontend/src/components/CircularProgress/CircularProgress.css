@@ -1,0 +1,42 @@
+.circular-progress {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circular-progress-svg {
+  transform: rotate(-90deg);
+}
+
+/* Gauge variant SVG does not need rotation */
+.circular-progress-svg-gauge {
+  display: block;
+}
+
+.circular-progress-bg {
+  stroke: var(--color-gray-200);
+}
+
+.circular-progress-bar {
+  stroke: var(--color-green);
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.circular-progress-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.percentage {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--color-green);
+}
+
+.circular-progress--small .percentage  { font-size: 0.875rem; }
+.circular-progress--medium .percentage { font-size: 1.25rem; }
+.circular-progress--large .percentage  { font-size: 2.5rem; }
