@@ -6,7 +6,7 @@ import ProductDetail from './pages/ProductDetail/ProductDetail'
 import SupplierComparison from './pages/SupplierComparison/SupplierComparison'
 import MerchantPortal from './pages/MerchantPortal/MerchantPortal'
 import PricingTiers from './pages/PricingTiers/PricingTiers'
-import AnalyticsReport from './pages/AnalyticsReport/AnalyticsReport'
+// import AnalyticsReport from './pages/AnalyticsReport/AnalyticsReport'
 import './index.css'
 
 // ─── ROUTES ────────────────────────────────────────────────────────────────────
@@ -24,7 +24,7 @@ function App() {
         <Route path="/compare/:id"   element={<SupplierComparison />} />
         <Route path="/merchant"      element={<MerchantPortal />} />
         <Route path="/pricing"       element={<PricingTiers />} />
-        <Route path="/report/:id"    element={<AnalyticsReport />} />
+        {/* <Route path="/report/:id"    element={<AnalyticsReport />} /> */}
       </Routes>
     </Router>
   )

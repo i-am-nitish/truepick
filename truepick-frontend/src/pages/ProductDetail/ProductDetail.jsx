@@ -83,9 +83,9 @@ const ProductDetail = () => {
             </div>
 
             <div className="detail-actions">
-              <Link to={`/report/${id}`} className="btn btn-outline-blue w-full">
+              {/* <Link to={`/report/${id}`} className="btn btn-outline-blue w-full">
                 View Full Analytics Report
-              </Link>
+              </Link> */}
               <a href={product.viralThreadUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline-blue w-full">
                 View Original Viral Thread
               </a>
