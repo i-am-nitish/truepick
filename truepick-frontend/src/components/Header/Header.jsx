@@ -17,20 +17,12 @@ const Header = () => {
       <div className="header-container">
         <Link to="/" className="logo-section">
           <div className="logo">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <path d="M12 36L18 12L36 18L30 42L12 36Z" fill="url(#gradient1)" />
-              <path d="M18 12L36 18L42 6L24 0L18 12Z" fill="url(#gradient2)" />
-              <defs>
-                <linearGradient id="gradient1" x1="12" y1="12" x2="36" y2="42">
-                  <stop stopColor="#2D9B87" />
-                  <stop offset="1" stopColor="#1A7566" />
-                </linearGradient>
-                <linearGradient id="gradient2" x1="18" y1="0" x2="42" y2="18">
-                  <stop stopColor="#3FAAA0" />
-                  <stop offset="1" stopColor="#2D9B87" />
-                </linearGradient>
-              </defs>
-            </svg>
+            {/* Replace "truepicklogo.png" with your actual JPG filename if you add a .jpg file to the public folder */}
+            <img 
+              src="/truepicklogo.png" 
+              alt="TruePick Logo" 
+              style={{ width: '48px', height: '48px', objectFit: 'contain' }} 
+            />
           </div>
           <div className="brand">
             <h1 className="brand-name">TruePick</h1>
