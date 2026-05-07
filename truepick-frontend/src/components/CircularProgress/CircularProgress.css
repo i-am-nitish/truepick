@@ -5,38 +5,84 @@
   justify-content: center;
 }
 
+/* ===================================================== */
+/* SVG */
+/* ===================================================== */
+
 .circular-progress-svg {
   transform: rotate(-90deg);
 }
 
-/* Gauge variant SVG does not need rotation */
 .circular-progress-svg-gauge {
   display: block;
+  overflow: visible;
 }
+
+/* ===================================================== */
+/* BACKGROUND TRACK */
+/* ===================================================== */
 
 .circular-progress-bg {
   stroke: var(--color-gray-200);
 }
 
+/* ===================================================== */
+/* PROGRESS BAR */
+/* ===================================================== */
+
 .circular-progress-bar {
-  stroke: var(--color-green);
-  transition: stroke-dashoffset 1s ease-in-out;
+  transition:
+    stroke-dashoffset 1s ease-in-out,
+    stroke 0.3s ease;
 }
+
+/* ===================================================== */
+/* LABELS */
+/* ===================================================== */
 
 .circular-progress-label {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
   text-align: center;
 }
+
+/* ===================================================== */
+/* GAUGE LABEL */
+/* ===================================================== */
+
+.circular-progress-label-gauge {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+/* ===================================================== */
+/* PERCENTAGE TEXT */
+/* ===================================================== */
 
 .percentage {
   font-family: var(--font-display);
   font-weight: 800;
-  color: var(--color-green);
+  transition: color 0.3s ease;
 }
 
-.circular-progress--small .percentage  { font-size: 0.875rem; }
-.circular-progress--medium .percentage { font-size: 1.25rem; }
-.circular-progress--large .percentage  { font-size: 2.5rem; }
+/* ===================================================== */
+/* SIZES */
+/* ===================================================== */
+
+.circular-progress--small .percentage {
+  font-size: 0.875rem;
+}
+
+.circular-progress--medium .percentage {
+  font-size: 1.25rem;
+}
+
+.circular-progress--large .percentage {
+  font-size: 2.5rem;
+}

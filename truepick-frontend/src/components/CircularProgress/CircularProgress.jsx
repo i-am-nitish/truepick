@@ -1,95 +1,262 @@
 import React from 'react';
 import './CircularProgress.css';
 
-const CircularProgress = ({ percentage, size = 'medium', showLabel = true, variant = 'circle' }) => {
-  const radius = size === 'large' ? 90 : size === 'medium' ? 50 : 30;
-  const stroke = size === 'large' ? 12 : size === 'medium' ? 8 : 6;
-  const normalizedRadius = radius - stroke * 2;
-  
-  const sizeClass = `circular-progress--${size}`;
-  const variantClass = `circular-progress--${variant}`;
+const CircularProgress = ({
+  percentage,
+  size = 'medium',
+  showLabel = true,
+  variant = 'circle'
+}) => {
+
+  // =====================================================
+  // DYNAMIC SCORE COLOR
+  // =====================================================
+
+  const getScoreColor = () => {
+
+    if (percentage < 40) {
+      return '#ef4444'; // red
+    }
+
+    if (percentage < 70) {
+      return '#f59e0b'; // yellow
+    }
+
+    return '#22c55e'; // green
+  };
+
+  const progressColor = getScoreColor();
+
+  // =====================================================
+  // SIZE CONFIG
+  // =====================================================
+
+  const radius =
+    size === 'large'
+      ? 90
+      : size === 'medium'
+      ? 50
+      : 30;
+
+  const stroke =
+    size === 'large'
+      ? 12
+      : size === 'medium'
+      ? 8
+      : 6;
+
+  const normalizedRadius =
+    radius - stroke * 2;
+
+  const sizeClass =
+    `circular-progress--${size}`;
+
+  const variantClass =
+    `circular-progress--${variant}`;
+
+  // =====================================================
+  // GAUGE VARIANT
+  // =====================================================
 
   if (variant === 'gauge') {
-    // For a semicircle, circumference is PI * r. We draw a half circle path.
-    const circumference = normalizedRadius * Math.PI;
-    const strokeDashoffset = circumference - (percentage / 100) * circumference;
-    
-    // SVG path for a top half circle: 
-    // Start at (stroke*2, radius)
-    // Arc to (radius*2 - stroke*2, radius)
-    // with radius = normalizedRadius
+
+    const circumference =
+      normalizedRadius * Math.PI;
+
+    const strokeDashoffset =
+      circumference -
+      (percentage / 100) * circumference;
+
     const startX = stroke * 2;
-    const endX = radius * 2 - stroke * 2;
+
+    const endX =
+      radius * 2 - stroke * 2;
+
     const startY = radius;
-    const pathData = `M ${startX} ${startY} A ${normalizedRadius} ${normalizedRadius} 0 0 1 ${endX} ${startY}`;
+
+    const pathData =
+      `M ${startX} ${startY}
+       A ${normalizedRadius} ${normalizedRadius}
+       0 0 1 ${endX} ${startY}`;
 
     return (
-      <div className={`circular-progress ${sizeClass} ${variantClass}`}>
-        {/* We only need half the height for a gauge */}
+
+      <div
+        className={`
+          circular-progress
+          ${sizeClass}
+          ${variantClass}
+        `}
+      >
+
         <svg
           height={radius}
           width={radius * 2}
-          className="circular-progress-svg-gauge"
+          className="
+            circular-progress-svg-gauge
+          "
         >
+
+          {/* BACKGROUND */}
+
           <path
-            className="circular-progress-bg"
+            className="
+              circular-progress-bg
+            "
             d={pathData}
             strokeWidth={stroke}
             fill="transparent"
             strokeLinecap="round"
           />
+
+          {/* PROGRESS */}
+
           <path
-            className="circular-progress-bar"
+            className="
+              circular-progress-bar
+            "
             d={pathData}
             strokeWidth={stroke}
             fill="transparent"
             strokeDasharray={circumference}
-            style={{ strokeDashoffset }}
+            strokeDashoffset={strokeDashoffset}
             strokeLinecap="round"
+            style={{
+              stroke: progressColor
+            }}
           />
+
         </svg>
+
+        {/* LABEL */}
+
+        {showLabel && (
+
+          <div
+            className="
+              circular-progress-label-gauge
+            "
+          >
+
+            <span
+              className="percentage"
+              style={{
+                color: progressColor
+              }}
+            >
+
+              {percentage}%
+
+            </span>
+
+          </div>
+
+        )}
+
       </div>
+
     );
+
   }
 
-  // Default circle variant
-  const circumference = normalizedRadius * 2 * Math.PI;
-  const strokeDashoffset = circumference - (percentage / 100) * circumference;
+  // =====================================================
+  // FULL CIRCLE VARIANT
+  // =====================================================
+
+  const circumference =
+    normalizedRadius * 2 * Math.PI;
+
+  const strokeDashoffset =
+    circumference -
+    (percentage / 100) * circumference;
 
   return (
-    <div className={`circular-progress ${sizeClass} ${variantClass}`}>
+
+    <div
+      className={`
+        circular-progress
+        ${sizeClass}
+        ${variantClass}
+      `}
+    >
+
       <svg
         height={radius * 2}
         width={radius * 2}
-        className="circular-progress-svg"
+        className="
+          circular-progress-svg
+        "
       >
+
+        {/* BACKGROUND */}
+
         <circle
-          className="circular-progress-bg"
+          className="
+            circular-progress-bg
+          "
           strokeWidth={stroke}
           fill="transparent"
           r={normalizedRadius}
           cx={radius}
           cy={radius}
         />
+
+        {/* PROGRESS */}
+
         <circle
-          className="circular-progress-bar"
+          className="
+            circular-progress-bar
+          "
           strokeWidth={stroke}
-          strokeDasharray={circumference + ' ' + circumference}
-          style={{ strokeDashoffset }}
+          strokeDasharray={
+            circumference +
+            ' ' +
+            circumference
+          }
+          strokeDashoffset={
+            strokeDashoffset
+          }
           strokeLinecap="round"
           fill="transparent"
           r={normalizedRadius}
           cx={radius}
           cy={radius}
+          style={{
+            stroke: progressColor
+          }}
         />
+
       </svg>
+
+      {/* LABEL */}
+
       {showLabel && (
-        <div className="circular-progress-label">
-          <span className="percentage">{percentage}%</span>
+
+        <div
+          className="
+            circular-progress-label
+          "
+        >
+
+          <span
+            className="percentage"
+            style={{
+              color: progressColor
+            }}
+          >
+
+            {percentage}%
+
+          </span>
+
         </div>
+
       )}
+
     </div>
+
   );
+
 };
 
 export default CircularProgress;

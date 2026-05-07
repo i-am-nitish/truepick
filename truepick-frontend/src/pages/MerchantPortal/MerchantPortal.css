@@ -100,3 +100,11 @@
 @media (max-width: 768px) {
   .merchant-form-wrap { padding: var(--spacing-xl); }
 }
+
+.audit-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;   /* key fix */
+  border-radius: 12px;
+  background: #f3f4f6;
+}
