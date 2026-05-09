@@ -10,8 +10,6 @@ import PricingTiers from './pages/PricingTiers/PricingTiers'
 import './index.css'
 
 // ─── ROUTES ────────────────────────────────────────────────────────────────────
-// Add new pages here as the product grows.
-// Each <Route> maps a URL path to a page component.
 // ───────────────────────────────────────────────────────────────────────────────
 
 function App() {

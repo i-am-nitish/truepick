@@ -17,7 +17,7 @@ const Header = () => {
       <div className="header-container">
         <Link to="/" className="logo-section">
           <div className="logo">
-            {/* Replace "truepicklogo.png" with your actual JPG filename if you add a .jpg file to the public folder */}
+
             <img 
               src="/truepicklogo.png" 
               alt="TruePick Logo" 
